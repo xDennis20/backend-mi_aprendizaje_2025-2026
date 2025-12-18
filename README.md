@@ -5,7 +5,7 @@ Mi viaje de 12 meses al desarrollador backend
 
 - **Inicio:** Octubre 2025
 - **Meta:** Ser programador backend 2026
-- **Problemas resueltos:** 15/100
+- **Problemas resueltos:** 24/100
 - **Semanas completadas:** 2/52
 
 ## 🗓️ Plan
