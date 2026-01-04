@@ -1,3 +1,16 @@
+"""
+RETO BACKEND: EL ANALISTA DE LOGS
+--------------------------------------------------------------------------------
+Objetivo:
+    Procesar un volcado de logs (texto crudo) para extraer métricas clave
+    sin utilizar librerías externas (solo Python puro).
+
+Métricas a obtener:
+    1. Conteo total de eventos por tipo (INFO, WARN, ERROR).
+    2. Identificación del mensaje de error más frecuente (El Culpable).
+
+Input: Cadena de texto con fecha, tipo de evento y mensaje.
+Output: Diccionario de conteo y string del error más común."""
 
 raw_logs = """
 [2026-01-02 14:00:00] INFO: User_123 logged in
