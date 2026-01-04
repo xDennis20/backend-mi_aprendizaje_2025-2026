@@ -16,13 +16,21 @@ estados = {
     "WARN": 0,
     "ERROR": 0
 }
+mensajes_error = {}
 for s in lista_logs:
     separador_fecha = s.split("]")
-    parte_importante = separador_fecha[1].split(":")
-    if "INFO" in parte_importante[0]:
+    parte_importante = separador_fecha[1].strip().split(":")
+    if "INFO" == parte_importante[0]:
         estados["INFO"] +=1
-    elif "WARN" in parte_importante[0]:
+    elif "WARN" == parte_importante[0]:
         estados["WARN"] +=1
-    elif "ERROR" in parte_importante[0]:
+    elif "ERROR" == parte_importante[0]:
         estados["ERROR"] +=1
-print(estados)
+    mensaje = parte_importante[1].strip()
+    if mensaje in mensajes_error:
+        mensajes_error[mensaje] +=1
+    else:
+        mensajes_error[mensaje] = 1
+print(f"Conteo: "
+      f"{estados}")
+print(max(mensajes_error, key=mensajes_error.get))
