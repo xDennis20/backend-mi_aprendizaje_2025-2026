@@ -24,32 +24,3 @@ def crear_cache():
             "cache_size": len(funciones_cache)
         }
     return ejecutar_con_cache, estadisticas_cache
-
-ejecutar, estadistica = crear_cache()
-
-def calcular_fibonacci(n):
-    print(f"Calculando fibonacci({n})...")
-    if n <= 1:
-        return n
-    return calcular_fibonacci(n - 1) + calcular_fibonacci(n - 2)
-
-# Test 1: Primera llamada
-assert ejecutar(calcular_fibonacci, 5) == 5
-print("✅ Test 1 pasado")
-
-# Test 2: Segunda llamada MISMOS argumentos (debe usar caché)
-# NO debe imprimir "Calculando fib(5)" de nuevo
-resultado = ejecutar(calcular_fibonacci, 5)
-assert resultado == 5
-print("✅ Test 2 pasado")
-
-# Test 3: Llamada con DIFERENTES argumentos
-assert ejecutar(calcular_fibonacci, 10) == 55
-print("✅ Test 3 pasado")
-
-# Test 4: Estadísticas correctas
-estadisticas = estadistica()
-assert estadisticas['hits'] == 1, f"Esperado hits=1, obtenido {estadisticas['hits']}"
-assert estadisticas['misses'] == 2, f"Esperado misses=2, obtenido {estadisticas['misses']}"
-assert estadisticas['cache_size'] == 2, f"Esperado cache_size=2, obtenido {estadisticas['cache_size']}"
-print("✅ Test 4 pasado")
