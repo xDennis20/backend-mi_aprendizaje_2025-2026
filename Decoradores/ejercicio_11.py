@@ -11,11 +11,3 @@ def cache_simple(func):
 def obtener_configuracion():
     print("Consultando BD...")
     return {"tema": "oscuro", "idioma": "es"}
-
-# Primera llamada
-config1 = obtener_configuracion()  # "Consultando BD..."
-
-# Segunda llamada
-config2 = obtener_configuracion()  # NO imprime (usa caché)
-
-print(config1 is config2)  # True (mismo objeto)
