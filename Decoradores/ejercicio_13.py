@@ -36,6 +36,3 @@ calc = Calculadora()
 
 print(calc.sumar(5, 10))
 print(calc.multiplicar(2, 2, 2))
-
-# Esto debería explotar con TU error personalizado:
-print(calc.sumar(5, "hola"))  # 💥 TypeError: ¡Solo quiero números enteros!
