@@ -11,16 +11,17 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def agregar(self,valor):
         nodo = Node(valor)
         if self.head is None:
             self.head = nodo
+            self.tail = nodo
             return
-        ultimo = self.head
-        while ultimo.siguiente:
-            ultimo = ultimo.siguiente
-        ultimo.siguiente = nodo
+        else:
+            self.tail.siguiente = nodo
+            self.tail = nodo
 
     def remover(self,valor):
         if not self.head:
@@ -49,5 +50,8 @@ class LinkedList:
 
 lista = LinkedList()
 lista.agregar(4)
-
-print(lista.obtener(3))
+lista.agregar(9)
+lista.agregar(30)
+lista.agregar(23)
+lista.agregar(50)
+lista.iterar()
