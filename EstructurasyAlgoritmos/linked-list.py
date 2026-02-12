@@ -86,14 +86,3 @@ class LinkedList:
         while actual:
             print(actual.valor)
             actual = actual.siguiente
-
-lista = LinkedList()
-lista.agregar(4)
-lista.agregar(9)
-lista.agregar(30)
-lista.agregar(23)
-lista.agregar(50)
-lista.agregar(3)
-lista.insertar(6,12)
-lista.invertir()
-lista.iterar()
