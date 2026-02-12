@@ -48,6 +48,20 @@ class LinkedList:
             actual = actual.siguiente
             contador +=1
 
+    def invertir(self):
+        if not self.head or not self.head.siguiente :
+            return IndexError("Error: No se puede invertir una lista vacia")
+        anterior = None
+        actual = self.head
+        siguiente = None
+        self.tail = self.head
+        while actual:
+            siguiente = actual.siguiente
+            actual.siguiente = anterior
+            anterior = actual
+            actual = siguiente
+        self.head = anterior
+
     def remover(self,valor):
         if not self.head:
             return
@@ -81,4 +95,5 @@ lista.agregar(23)
 lista.agregar(50)
 lista.agregar(3)
 lista.insertar(6,12)
+lista.invertir()
 lista.iterar()
