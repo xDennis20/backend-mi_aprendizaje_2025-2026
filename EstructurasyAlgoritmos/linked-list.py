@@ -49,8 +49,8 @@ class LinkedList:
             contador +=1
 
     def invertir(self):
-        if not self.head or not self.head.siguiente :
-            return IndexError("Error: No se puede invertir una lista vacia")
+        if not self.head or not self.head.siguiente:
+            raise IndexError("Error: No se puede invertir una lista vacia")
         anterior = None
         actual = self.head
         siguiente = None
