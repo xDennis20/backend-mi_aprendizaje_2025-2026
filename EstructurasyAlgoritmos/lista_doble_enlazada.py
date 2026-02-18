@@ -48,6 +48,24 @@ class ListaDobleEnlazada:
             actual = actual.siguiente
             contador += 1
 
+    def remover(self,valor):
+        if not self.head:
+            raise (IndexError("Error: Lista vacia"))
+        actual = self.head
+        while actual and actual.valor != valor:
+            actual = actual.siguiente
+        if actual is None:
+            return
+        if actual == self.head:
+            self.head = self.head.siguiente
+        if actual == self.tail:
+            self.tail = self.tail.anterior
+        if actual.anterior:
+            actual.anterior.siguiente = actual.siguiente
+        if actual.siguiente:
+            actual.siguiente.anterior = actual.anterior
+        return
+
     def iterar_reversa(self):
         ultimo = self.tail
         while ultimo:
@@ -65,5 +83,6 @@ lista.agregar(3)
 lista.agregar(9)
 lista.agregar(10)
 lista.agregar(23)
-lista.insertar(4,7)
+lista.insertar(3,7)
+lista.remover(23)
 lista.iterar()
