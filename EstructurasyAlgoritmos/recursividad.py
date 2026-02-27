@@ -27,4 +27,13 @@ def maximo_recursivo(numeros: list) -> int:
     else:
         return numero_mayor
 
-print(maximo_recursivo([1,2,9,2,15,3]))
+def total_numeros_pares(numeros: list) -> int:
+    if len(numeros) == 0:
+        return 0
+
+    contador = 0
+    if numeros[0] % 2 == 0:
+        contador = 1
+    return contador + total_numeros_pares(numeros[1:])
+
+print(total_numeros_pares([2,9,4,10,2,3]))
