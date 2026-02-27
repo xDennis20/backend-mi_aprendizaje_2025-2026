@@ -36,4 +36,10 @@ def total_numeros_pares(numeros: list) -> int:
         contador = 1
     return contador + total_numeros_pares(numeros[1:])
 
-print(total_numeros_pares([2,9,4,10,2,3]))
+def es_palindromo(palabra: str) -> bool:
+    if len(palabra) == 0 or len(palabra) == 1:
+        return True
+    palabra_minuscula = palabra.lower()
+    if palabra_minuscula[0] != palabra_minuscula[-1]:
+        return False
+    return es_palindromo(palabra_minuscula[1:-1])
