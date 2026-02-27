@@ -3,12 +3,12 @@ def total_paginas_libros(libros: list) -> int:
         return 0
     return libros[0] + total_paginas_libros(libros[1:])
 
-def n_factoria(n: int):
+def n_factorial(n: int):
     if n < 0:
         raise ValueError("Error: El numero no debe ser negativo")
     if n == 0:
         return 1
-    return n * n_factoria(n - 1)
+    return n * n_factorial(n - 1)
 
 def invertir_string(palabra: str) -> str:
     if len(palabra) == 0:
@@ -43,3 +43,8 @@ def es_palindromo(palabra: str) -> bool:
     if palabra_minuscula[0] != palabra_minuscula[-1]:
         return False
     return es_palindromo(palabra_minuscula[1:-1])
+
+def potencia_recursiva(base: int, exponente: int) -> int:
+    if exponente == 0:
+        return 1
+    return base * potencia_recursiva(base,exponente-1)
