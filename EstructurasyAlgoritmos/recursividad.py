@@ -49,11 +49,18 @@ def potencia_recursiva(base: int, exponente: int) -> int:
         return 1
     return base * potencia_recursiva(base,exponente-1)
 
-def fibonacci(n: int) -> int:
+def fibonacci(n: int,memoria = None) -> int:
+    if memoria is None:
+        memoria = {}
+
     if n == 0:
         return 0
     elif n == 1:
         return 1
-    return fibonacci(n-1) + fibonacci(n-2)
 
-print(fibonacci(4))
+    #Guardar memoria
+    if n in memoria:
+        return memoria.get(n)
+    resultado = fibonacci(n-1, memoria) + fibonacci(n-2, memoria)
+    memoria[n] = resultado
+    return resultado
