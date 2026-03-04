@@ -4,6 +4,9 @@ class Nodo:
         self.left = None
         self.right = None
 
+    def __str__(self):
+        return f"{self.valor}"
+
 def pre_orden(node: Nodo):
     if node is None:
         return
@@ -23,10 +26,18 @@ def post_orden(node):
     post_orden(node.right)  # 2. Ve todo a la derecha
     print(node.valor)       # 3. Imprime al final
 
+def agregar_valor(valor, node: Nodo):
+    if node is None:
+        return Nodo(valor)
+
+    if node.valor < valor:
+        node.right = agregar_valor(valor,node.right)
+    elif node.valor > valor:
+        node.left = agregar_valor(valor,node.left)
+    print(node)
+    return node
+
 raiz = Nodo(10)
-hijo_izq = Nodo(5)
-hijo_der = Nodo(15)
-nieto_izq = Nodo(2)
 
 raiz.left = hijo_izq
 raiz.right = hijo_der
