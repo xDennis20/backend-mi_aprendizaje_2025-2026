@@ -34,12 +34,23 @@ def agregar_valor(valor, node: Nodo):
         node.right = agregar_valor(valor,node.right)
     elif node.valor > valor:
         node.left = agregar_valor(valor,node.left)
-    print(node)
     return node
+
+def buscar_valor(valor, node: Nodo) -> bool:
+    if node is None:
+        return False
+    if node.valor == valor:
+        return True
+    if node.valor < valor:
+        return buscar_valor(valor, node.right)
+    elif node.valor > valor:
+        return buscar_valor(valor, node.left)
 
 raiz = Nodo(10)
 
-raiz.left = hijo_izq
-raiz.right = hijo_der
-hijo_izq.left = nieto_izq
-pre_orden(raiz)
+raiz = agregar_valor(5, raiz)
+raiz = agregar_valor(15, raiz)
+raiz = agregar_valor(2, raiz)
+raiz = agregar_valor(7, raiz)
+
+print(buscar_valor(7,raiz))
