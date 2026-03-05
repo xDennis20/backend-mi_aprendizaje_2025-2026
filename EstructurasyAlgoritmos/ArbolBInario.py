@@ -46,11 +46,34 @@ def buscar_valor(valor, node: Nodo) -> bool:
     elif node.valor > valor:
         return buscar_valor(valor, node.left)
 
-raiz = Nodo(10)
+def eliminar_valor(valor,node: Nodo):
+    #Caso base: Valor no encontrado
+    if node is None:
+        print("El valor no existe en el arbol")
+        return None
+    #Caso base: Encontramos el valor
+    if node.valor == valor:
+        #Caso 1: El nodo es una hoja
+        if node.left is None and node.right is None:
+            return None
 
-raiz = agregar_valor(5, raiz)
-raiz = agregar_valor(15, raiz)
-raiz = agregar_valor(2, raiz)
-raiz = agregar_valor(7, raiz)
+        # Caso 3: El nodo tiene 2 hijos
+        if node.left is not None and node.right is not None:
+            sucesor = node.right
+            while sucesor.left:
+                sucesor = sucesor.left
+            node.valor = sucesor.valor
+            node.right = eliminar_valor(node.valor, node.right)
+            return node
+        #Caso 2: El nodo tiene un hijo
+        if node.right is not None:
+            return node.right
+        elif node.left is not None:
+            return node.left
 
-print(buscar_valor(7,raiz))
+    #Recorrer arbol
+    if node.valor < valor:
+        node.right = eliminar_valor(valor, node.right)
+    elif node.valor > valor:
+        node.left = eliminar_valor(valor, node.left)
+    return node
