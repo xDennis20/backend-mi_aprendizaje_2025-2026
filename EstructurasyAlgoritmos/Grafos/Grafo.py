@@ -1,5 +1,6 @@
 from NodoGrafo import NodoGrafo
 from collections import deque
+import heapq
 
 class Grafo:
     def __init__(self):
@@ -55,6 +56,41 @@ class Grafo:
                 if vecino not in visitados:
                     cola.append(self.nodos.get(vecino))
         return False
+
+    def buscar_dijkstra(self, origen: str, valor: str):
+        if len(valor.strip()) == 0:
+            return "Error: Valor vacio"
+
+        libreta_costos = {}
+        for ciudad in self.nodos:
+            libreta_costos[ciudad] = float("inf")
+        libreta_costos[origen] = 0
+        cola_prioridad = []
+        padres = dict()
+        contador = 0
+        heapq.heappush(cola_prioridad,(0,contador,self.nodos.get(origen)))
+        while cola_prioridad:
+            peso_actual, contador, nodo_actual = heapq.heappop(cola_prioridad)
+            if nodo_actual.valor == valor:
+                ruta = []
+                paso_actual = valor
+
+                while paso_actual in padres:
+                    ruta.append(paso_actual)
+                    paso_actual = padres[paso_actual]
+
+                ruta.append(origen)
+                ruta.reverse()
+                recorrido = " -> ".join(ruta)
+                return f"Ruta más corta a {valor}: {recorrido} (Costo total: {peso_actual} horas)"
+
+            for nombre,peso in nodo_actual.vecinos.items():
+                peso += peso_actual
+                if libreta_costos.get(nombre) > peso:
+                    libreta_costos[nombre] = peso
+                    padres[nombre] = nodo_actual.valor
+                    contador+=1
+                    heapq.heappush(cola_prioridad, (peso, contador, self.nodos.get(nombre)))
 
     def __str__(self):
         return f"Grafo: {self.nodos}"
