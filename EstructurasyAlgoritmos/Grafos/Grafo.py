@@ -1,4 +1,5 @@
 from NodoGrafo import NodoGrafo
+from collections import deque
 
 class Grafo:
     def __init__(self):
@@ -36,6 +37,23 @@ class Grafo:
             if vecino not in visitados:
                 if self.buscar_dfs(vecino, valor, visitados):
                     return True
+        return False
+
+    def buscar_bfs(self,inicio: str, valor: str) -> bool:
+        if len(valor.strip()) == 0:
+            return False
+        visitados = set()
+        cola = deque()
+        cola.append(self.nodos.get(inicio))
+        while cola:
+            nodo_actual = cola.popleft()
+            print(f"Visitando {nodo_actual.valor}")
+            visitados.add(nodo_actual.valor)
+            if nodo_actual.valor == valor:
+                return True
+            for vecino in nodo_actual.vecinos:
+                if vecino not in visitados:
+                    cola.append(self.nodos.get(vecino))
         return False
 
     def __str__(self):
