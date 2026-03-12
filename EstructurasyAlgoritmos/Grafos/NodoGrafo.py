@@ -9,3 +9,6 @@ class NodoGrafo:
 
     def __str__(self):
         return f"Valor: {self.valor} Vecinos: {self.vecinos}"
+
+    def __repr__(self):
+        return f"{type((self)).__name__}(valor='{self.valor}', vecinos='{self.vecinos}'"
