@@ -12,5 +12,16 @@ def prefix_sum(lista_numeros: list[int], r: int, l: int) -> int:
         return res
     res = prefijo[r] - prefijo[l-1]
     return res
-print(prefix_sum([3,4,5,6,13,24],4,0))
 
+def product_except_self(nums: list[int]) -> list[int]:
+    prefijo = [1]
+    for i in range(1,len(nums)):
+        prefijo.append(prefijo[i - 1] * nums[i - 1])
+    subfijo = [1]
+    for derecha in range(1,len(nums)):
+        subfijo.append(subfijo[derecha - 1]  * nums[-derecha])
+    resultado = []
+    for p,s in zip(prefijo,subfijo[::-1]):
+        resultado.append(p*s)
+    return resultado
+print(product_except_self([1,2,3,4,5]))
