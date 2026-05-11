@@ -25,3 +25,46 @@ def product_except_self(nums: list[int]) -> list[int]:
         resultado.append(p*s)
     return resultado
 print(product_except_self([1,2,3,4,5]))
+
+def find_missing_letter(chars: list[str]):
+    alfabeto = {
+        "a" : "b",
+        "b" : "c",
+        "c" : "d",
+        "d" : "e",
+        "e" : "f",
+        "f" : "g",
+        "g" : "h",
+        "h" : "i",
+        "i" : "j",
+        "j" : "k",
+        "k" : "l",
+        "l" : "m",
+        "m" : "n",
+        "n" : "o",
+        "o" : "p",
+        "p" : "q",
+        "q" : "r",
+        "r" : "s",
+        "s" : "t",
+        "t" : "u",
+        "u" : "v",
+        "v" : "w",
+        "w" : "x",
+        "x" : "y",
+        "y" : "z"
+      }
+    for char in chars:
+        if char.isupper():
+            obtener_char_s = alfabeto.get(char.lower())
+            obtener_char_s = obtener_char_s.upper()
+        else:
+            obtener_char_s = alfabeto.get(char)
+        if obtener_char_s not in chars:
+            if char.isupper():
+                char_faltante = alfabeto.get(char.lower())
+                return char_faltante.upper()
+            char_faltante = alfabeto.get(char.lower())
+            return char_faltante
+    return None
+print(find_missing_letter(['c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'o', 'p', 'q', 'r']))
