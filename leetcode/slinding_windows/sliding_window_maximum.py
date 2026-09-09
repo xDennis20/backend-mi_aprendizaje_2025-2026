@@ -3,10 +3,10 @@ from collections import deque
 def max_sliding_window( nums: list[int], k: int) -> list[int]:
     left = 0
     cola = deque()
-    resultado = []
+    resultados = []
 
     for right, num in enumerate(nums):
-        while cola and num >= nums[cola[-1]] :
+        while cola and nums[cola[-1]] <= num:
             cola.pop()
 
         cola.append(right)
@@ -15,10 +15,10 @@ def max_sliding_window( nums: list[int], k: int) -> list[int]:
             cola.popleft()
 
         if (right - left) + 1 == k:
-            resultado.append(nums[cola[0]])
+            resultados.append(nums[cola[0]])
             left+=1
 
-    return resultado
+    return resultados
 
 print(max_sliding_window([1,3,-1,-3,5,3,6,7], 3))
 print(max_sliding_window([1,2,1,0,4,2,6], 3))
