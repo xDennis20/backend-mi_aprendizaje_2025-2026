@@ -5,7 +5,7 @@ class ListNode:
          self.val = val
          self.next = next
 
-def reorder_list(self, head: Optional[ListNode]) -> None:
+def reorder_list(head: Optional[ListNode]) -> None:
     """Sacar la mitad de la lista enlazada"""
     slow = head
     fast = head
