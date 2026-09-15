@@ -7,21 +7,19 @@ class ListNode:
 
 def merge_two_lists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
     dummy = ListNode(-1)
-    current_pointer = dummy
+    pointer = dummy
 
     while list1 and list2:
-        if list1.val < list2.val:
-            current_pointer.next = list1
+        if list1.val <= list2.val:
+            pointer.next = list1
+            pointer = pointer.next
             list1 = list1.next
         else:
-            current_pointer.next = list2
+            pointer.next = list2
+            pointer = pointer.next
             list2 = list2.next
-        current_pointer = current_pointer.next
 
-    if list1:
-        current_pointer.next = list1
-    elif list2:
-        current_pointer.next = list2
+    pointer.next = list1 or list2
 
     return dummy.next
 
