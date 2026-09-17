@@ -11,26 +11,30 @@ def reorder_list(head: Optional[ListNode]) -> None:
     fast = head
 
     while fast and fast.next:
-        fast = fast.next.next
         slow = slow.next
+        fast = fast.next.next
 
-    """Invertir segunda mitad"""
     segunda_mitad = slow.next
+    slow.next = None
+
+    """Invertir la mitad de la lista sacada"""
     recuerdo_anterior = None
+
     while segunda_mitad:
-        recuerdo = segunda_mitad.next
+        recuerdo_siguiente = segunda_mitad.next
         segunda_mitad.next = recuerdo_anterior
         recuerdo_anterior = segunda_mitad
-        segunda_mitad = recuerdo
+        segunda_mitad = recuerdo_siguiente
 
-    """Unir las 2 listas separadas"""
-    slow.next = None
+    """Unir las 2 listas segun el orden"""
     segunda_mitad = recuerdo_anterior
     primera_mitad = head
     while segunda_mitad:
-        recuerdo_primero = primera_mitad.next
-        recuerdo_segundo = segunda_mitad.next
+        siguiente1 = primera_mitad.next
+        siguiente2 = segunda_mitad.next
         primera_mitad.next = segunda_mitad
-        segunda_mitad.next = recuerdo_primero
-        primera_mitad =recuerdo_primero
-        segunda_mitad = recuerdo_segundo
+        segunda_mitad.next = siguiente1
+        primera_mitad = siguiente1
+        segunda_mitad = siguiente2
+
+    return head
