@@ -36,5 +36,3 @@ def reorder_list(head: Optional[ListNode]) -> None:
         segunda_mitad.next = siguiente1
         primera_mitad = siguiente1
         segunda_mitad = siguiente2
-
-    return head
