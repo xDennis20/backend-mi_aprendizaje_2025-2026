@@ -18,4 +18,5 @@ def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode]:
         fast = fast.next
 
     slow.next = slow.next.next
+
     return dummy.next
