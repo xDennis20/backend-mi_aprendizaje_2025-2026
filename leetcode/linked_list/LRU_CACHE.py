@@ -15,12 +15,13 @@ class LRUCache:
         self.tail.anterior = self.head
 
     def get(self, key: int) -> int:
-        if key not in self.cache:
+        if key in self.cache:
+            nodo = self.cache[key]
+            self.remover(nodo)
+            self.insertar(nodo)
+            return nodo.value
+        else:
             return -1
-        r_nodo = self.cache[key]
-        self.remover(r_nodo)
-        self.insertar(r_nodo)
-        return r_nodo.value
 
     def put(self, key: int, value: int) -> None:
         if key not in self.cache:
@@ -28,7 +29,7 @@ class LRUCache:
                 nodo_eliminar = self.head.siguiente
                 self.remover(nodo_eliminar)
                 del self.cache[nodo_eliminar.clave]
-            nodo_nuevo = Node(key,value)
+            nodo_nuevo = Node(key, value)
             self.insertar(nodo_nuevo)
             self.cache[key] = nodo_nuevo
         else:
