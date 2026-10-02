@@ -22,27 +22,20 @@ def merge_k_lists(lists: list[Optional[ListNode]]) -> Optional[ListNode]:
                 pointer = dummy
 
                 while l1 and l2:
-                    recuerdo_siguiente_1 = l1.next
-                    recuerdo_siguiente_2 = l2.next
-
                     if l1.val <= l2.val:
                         pointer.next = l1
-                        l1 = recuerdo_siguiente_1
+                        l1 = l1.next
                     else:
                         pointer.next = l2
-                        l2 = recuerdo_siguiente_2
+                        l2 = l2.next
 
                     pointer = pointer.next
 
-                if l1:
-                    pointer.next = l1
-                elif l2:
-                    pointer.next = l2
-
+                pointer.next = l1 or l2
                 ronda_siguiente.append(dummy.next)
             else:
                 ronda_siguiente.append(lists[i])
 
         lists = ronda_siguiente
 
-    return lists
+    return lists[0]
