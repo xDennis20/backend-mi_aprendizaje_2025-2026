@@ -1,6 +1,6 @@
 from collections import deque
 
-def max_sliding_window( nums: list[int], k: int) -> list[int]:
+def max_sliding_window(nums: list[int], k: int) -> list[int]:
     left = 0
     cola = deque()
     resultado = []
@@ -11,12 +11,12 @@ def max_sliding_window( nums: list[int], k: int) -> list[int]:
 
         cola.append(right)
 
-        if cola[0] < left:
+        if left > cola[0]:
             cola.popleft()
 
         if (right - left) + 1 == k:
             resultado.append(nums[cola[0]])
-            left += 1
+            left+=1
 
     return resultado
 
