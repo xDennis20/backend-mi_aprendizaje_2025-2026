@@ -3,13 +3,14 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+
 class Solution:
     def __init__(self):
         self.max_dia = 0
 
     def diameter_of_binary_tree(self, root: TreeNode | None) -> int:
         def dfs(node: TreeNode | None) -> int:
-            if not node:
+            if node is None:
                 return 0
 
             left_height = dfs(node.left)
