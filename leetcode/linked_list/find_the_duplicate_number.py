@@ -16,8 +16,6 @@ def find_duplicate(nums: list[int]) -> int:
         fast = nums[fast]
 
         if slow == fast:
-            break
-
-    return slow
+            return slow
 
 print(find_duplicate([1,3,4,2,2]))
