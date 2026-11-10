@@ -12,13 +12,13 @@ class TreeNode:
 
 def is_balanced(root: TreeNode | None) -> bool:
     def dfs(node: TreeNode | None) -> int:
-        if node is None:
+        if not node:
             return 0
 
         left_height = dfs(node.left)
         right_height = dfs(node.right)
 
-        if left_height == -1 or right_height == -1 or abs(left_height - right_height) > 1:
+        if left_height == -1 or right_height == -1 or abs(left_height - right_height) <= 1:
             return -1
 
         return 1 + max(left_height, right_height)
