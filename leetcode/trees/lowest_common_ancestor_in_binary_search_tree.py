@@ -8,7 +8,7 @@ class TreeNode:
         return f"{self.val}"
 
 def lowest_common_ancestor(root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-    if root is None:
+    if not root:
         return None
 
     if p.val < root.val and q.val < root.val:
