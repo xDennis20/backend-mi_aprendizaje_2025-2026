@@ -14,16 +14,15 @@ def reverse_k_group(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     while True:
         for _ in range(k):
             nodo_explorador = nodo_explorador.next
-            if nodo_explorador is None:
+            if not nodo_explorador:
                 break
-
-        if nodo_explorador is None:
+        if not nodo_explorador:
             break
 
         grupo_sig = nodo_explorador.next
         recuerdo_anterior = grupo_sig
         cabeza_original = grupo_prev.next
-        curr = grupo_prev.next
+        curr: ListNode = grupo_prev.next
 
         while curr != grupo_sig:
             recuerdo = curr.next
