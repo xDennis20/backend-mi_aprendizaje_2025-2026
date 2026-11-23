@@ -6,7 +6,7 @@ class ListNode:
          self.next = next
 
 def reverse_k_group(head: Optional[ListNode], k: int) -> Optional[ListNode]:
-    dummy = ListNode(-1)
+    dummy = ListNode(0)
     dummy.next = head
     grupo_prev = dummy
     nodo_explorador = dummy
@@ -20,19 +20,18 @@ def reverse_k_group(head: Optional[ListNode], k: int) -> Optional[ListNode]:
             break
 
         grupo_sig = nodo_explorador.next
-        recuerdo_anterior = grupo_sig
         cabeza_original = grupo_prev.next
-        curr: ListNode = grupo_prev.next
+        recuerdo_anterior = grupo_sig
+        curr = grupo_prev.next
 
         while curr != grupo_sig:
-            recuerdo = curr.next
+            recuerdo_sig = curr.next
             curr.next = recuerdo_anterior
             recuerdo_anterior = curr
-            curr = recuerdo
+            curr = recuerdo_sig
 
         grupo_prev.next = recuerdo_anterior
         grupo_prev = cabeza_original
-
         nodo_explorador = grupo_prev
 
     return dummy.next
