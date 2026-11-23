@@ -6,9 +6,7 @@ class TreeNode:
 
 
     def __repr__(self) -> str:
-        return (f"value: {self.val}"
-                f"left: {self.left}"
-                f"right: {self.right}")
+        return (f"value: {self.val}")
 
 def is_balanced(root: TreeNode | None) -> bool:
     def dfs(node: TreeNode | None) -> int:
@@ -27,6 +25,7 @@ def is_balanced(root: TreeNode | None) -> bool:
 
 root = TreeNode(1)
 root.left = TreeNode(2)
+root.right = TreeNode(5)
 root.left.left = TreeNode(3)
 
 resultado = is_balanced(root)
