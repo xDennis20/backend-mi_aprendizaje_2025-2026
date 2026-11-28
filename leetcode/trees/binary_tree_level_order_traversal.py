@@ -15,13 +15,13 @@ def level_order(root: TreeNode | None) -> list[list[int]]:
 
     cola: deque[TreeNode] = deque()
     cola.append(root)
-    resultado = []
+    res = []
 
     while cola:
-        long_actual = len(cola)
+        longitud_actual = len(cola)
         nivel_actual = []
 
-        for _ in range(long_actual):
+        for _ in range(longitud_actual):
             nodo = cola.popleft()
             nivel_actual.append(nodo.val)
             if nodo.left:
@@ -29,6 +29,6 @@ def level_order(root: TreeNode | None) -> list[list[int]]:
             if nodo.right:
                 cola.append(nodo.right)
 
-        resultado.append(nivel_actual)
+        res.append(nivel_actual)
 
-    return resultado
+    return res
